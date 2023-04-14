@@ -8,4 +8,8 @@ def home(request):
 
 
 def result(request):
-    return render(request, 'result.html')
+    if request.method == 'POST':
+        user_input = request.POST.get('user_input')
+        return render(request, 'result.html', context={'user_stuff': user_input})
+    else:
+        return render(request, 'result.html')
